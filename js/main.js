@@ -1,22 +1,37 @@
 let totalCarrito = 1
 let producto = 'producto';
+const carrito = [];
 
-precio = parseFloat(prompt("Ingresar precio")) ;
-cantidad = parseFloat(prompt("Ingresar cantidad"));
-
-compra = precio*cantidad;
-desc = compra*0.15;
-pagar = compra-desc;
-
-document.write("El descuento es de: $"+desc + "<br>");
-document.write("El total a pagar es: $"+pagar);
 
 function agregarAlCarrito(producto, stock) {
         console.log('agregaste al carrito: ' + producto);
-        /* console.log('Total en el carrito de compras:' + totalCarrito++); */
+        
         const tenemosStock = stockDisponible(stock);
 
 }
+
+function agregarAlCarrito(producto){
+        carrito.push(producto);
+        console.log(carrito);
+}
+
+agregarAlCarrito({id: 1200, name: "Zapatillas Nike", price:20000})
+agregarAlCarrito({id: 1400, name: "Remera Nike", price:8000})
+agregarAlCarrito({id: 2200, name: "Mochila Nike", price:6000})
+
+function quitarDelCarrito(idProducto){
+        const index = carrito.findIndex((producto) => producto.id === idProducto);
+        console.log(index);
+        if(index !== -1) {
+                carrito.splice(index, 1);
+        }
+        console.log(carrito);
+}
+
+quitarDelCarrito(2200);
+quitarDelCarrito(1200);
+
+
   
 function stockDisponible(stock){
          
